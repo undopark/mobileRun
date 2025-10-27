@@ -1022,6 +1022,10 @@ PrefabInstance:
       propertyPath: runSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114472432562717340, guid: b1cc94d26cd016d479aa5b522d88da0a, type: 3}
+      propertyPath: doubleJumpSpeed
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 114739187124406758, guid: b1cc94d26cd016d479aa5b522d88da0a, type: 3}
       propertyPath: twoHandSword
       value: 
