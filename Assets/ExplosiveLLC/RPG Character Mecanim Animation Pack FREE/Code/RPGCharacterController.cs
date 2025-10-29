@@ -487,11 +487,24 @@ namespace RPGCharacterAnims
         /// <param name="twoHandedWeapon">If wielding a two-handed weapon.</param>
         public void RunningAttack(Side side, bool leftWeapon, bool rightWeapon, bool twoHandedWeapon)
         {
-			if (side == Side.Right && rightWeapon) { animator.SetActionTrigger(AnimatorTrigger.AttackTrigger, 4); }
-			else if (hasNoWeapon) {
-				animator.SetSide(side);
-				animator.SetActionTrigger(AnimatorTrigger.AttackTrigger, 1);
-			}
+            // Lock only actions during the running attack; keep movement responsive.
+            if (twoHandedWeapon) {
+                animator.SetSide(Side.Left);
+                animator.SetActionTrigger(AnimatorTrigger.AttackTrigger, 1);
+                _isAttacking = true;
+                Lock(false, true, true, 0, 0.8f);
+            }
+            else if (side == Side.Right && rightWeapon) {
+                animator.SetActionTrigger(AnimatorTrigger.AttackTrigger, 4);
+                _isAttacking = true;
+                Lock(false, true, true, 0, 0.6f);
+            }
+            else if (hasNoWeapon) {
+                animator.SetSide(side);
+                animator.SetActionTrigger(AnimatorTrigger.AttackTrigger, 1);
+                _isAttacking = true;
+                Lock(false, true, true, 0, 0.5f);
+            }
         }
 
         /// <summary>
